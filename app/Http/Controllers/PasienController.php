@@ -1,12 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace ASSES\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PasienController extends Controller
 {
-    public function index(){
-        return "Halo ini adalah method index, dalam controller DosenController. - www.malasngoding.com";
-    }
+    	// mengambil data dari table pegawai
+    	$pasien = DB::table('pasien')->get();
+ 
+    	// mengirim data pegawai ke view index
+    	return view('index',['pasien' => $pasien]);
 }
+
+

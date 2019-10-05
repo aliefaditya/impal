@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace ASSES\Http\Controllers\Auth;
 
-use App\User;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
+use ASSES\PasienUser;
+use ASSES\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -49,9 +48,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'nik' => 'required|string|max:20|unique:pasien',
+            'nama' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:pasien',
+            'password' => 'required|string|min:6|confirmed',
+            'telepon' => 'required|string|max:15',
+            'ttl' => 'required|string|max:20',
+            'alamat' => 'required|string|max:255',
+            'username' => 'required|string|max:20|unique:pasien',
         ]);
     }
 
@@ -59,14 +63,19 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \ASSES\User
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        return PasienUser::create([
+            'nik' => $data['nik'],
+            'nama' => $data['nama'],
+            'username' => $data['username'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'ttl' => $data['ttl'],
+            'alamat' => $data['alamat'],
+            'telepon' => $data['telepon'],
+            'password' => bcrypt($data['password']),
         ]);
     }
 }
