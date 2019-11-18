@@ -63,7 +63,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ Auth::user()->nama }} <span class="caret"></span></a>
                                 
                                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                    <a class="dropdown-item" href="portfolio.html">Akun Saya</a>
+                                    <a class="dropdown-item" href="{{ url('/pasien') }}">Akun Saya</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
@@ -116,4 +116,11 @@
     <script src="{{ asset('js/main.js')}}"></script> 
     <script src="{{ asset('vendor/flipclock/timer.js')}}"></script>
 </body>
+
+  <script type="text/javascript">
+    $(document).ready( function () {
+        $('#tabledokter').DataTable();
+    } );
+  </script>
+
 </html>

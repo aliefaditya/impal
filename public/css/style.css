@@ -7487,7 +7487,7 @@ h1, h2, h3, h4, h5,
         background: -webkit-gradient(left bottom, right top, color-stop(0%, #CBF5EA), color-stop(100%, #07745A));
         background: -webkit-linear-gradient(45deg, #CBF5EA 0%, #07745A 100%);
         background: -o-linear-gradient(45deg, #CBF5EA 0%, #07745A 100%);
-        background: -ms-linear-gradient(45deg, #CBF5EA 0%, #07745Ad 100%);
+        background: -ms-linear-gradient(45deg, #CBF5EA 0%, #07745A 100%);
         background: linear-gradient(45deg, #CBF5EA 0%, #07745A 100%);
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#448ef6', endColorstr='#af05a9', GradientType=1 ); }
       .owl-carousel.home-slider .slider-item .slider-text {
@@ -9092,4 +9092,25 @@ dl.accordion.time-line:before {
 .accordion.time-line > dt > a:hover,
 .accordion.time-line > dt > a.active {
   background: none !important;
+}
+
+.kotak-jadwal {
+  
+  border: solid #818182;
+
+  border-radius: 5px;
+}
+
+.kotak-jadwal:hover {
+  background-color: #20c997;
+  color: #fff;
+}
+
+.kotak-jadwal h3:hover{
+  color: #fff;
+}
+
+.kotak-poli{
+  background-color: #07745A;
+  border-radius: 5px;
 }

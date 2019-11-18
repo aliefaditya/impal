@@ -12,19 +12,51 @@
 */
 
 Route::get('/', function () {
-    return view('homepage');
+    return view('welcome');
 });
 
-Route::get('tentang', function () {
-	return view('tentang');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/jadwalpoli','JadwalController@index');
+Route::get('/jadwalpoli/tambah','JadwalController@tambah');
+Route::post('/jadwalpoli/simpan','JadwalController@simpan');
+Route::get('/jadwalpoli/edit/{id}','JadwalController@edit');
+Route::post('/jadwalpoli/update','JadwalController@update');
+Route::get('/jadwalpoli/hapus/{id}','JadwalController@hapus');
+
+Route::get('admin/routes', 'AdminController@admin')->middleware('admin');
+
+
+
+Route::get('daftarantrean', function () {
+	return view('daftarantrean');
 });
 
-Route::get('login', function () {
-	return "Halo, Selamat datang di halaman login ASSES";
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('profil', function () {
+	return view('profil');
 });
 
-Route::get('register', function () {
-	return view('register');
+Route::get('jadwal', function () {
+	return view('jadwal');
 });
 
-Route::get('pasien', 'PasienController@index');
+
+Route::get('beranda', function () {
+	return view('beranda');
+});
+Route::get('/pasien',function () {
+	return view('pasien');
+});
+Route::get('/pasien/edit/{id}', 'PasienController@edit');
+Route::put('/pasien/update/{id}', 'PasienController@update');

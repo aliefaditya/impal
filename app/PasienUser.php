@@ -29,5 +29,33 @@ class PasienUser extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function edit(User $user)
+    {   
+        $user = Auth::user();
+        return view('users.edit', compact('user'));
+    }
+
+    public function update(array $attributes = [], array $options = [])
+    { 
+        $this->validate(request(), [
+            'nama' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6|confirmed'
+        ]);
+        $user->nik = $request->nik;
+        $user->nama = $request->nama;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->ttl = $request->ttl;
+        $user->alamat = $request->alamat;
+        $user->telepon = $request->telepon;
+        $user->password = bcrypt(request('password'));
+
+        $user->save();
+
+        return redirect('/pasien');
+    }
+
+    
 
 }

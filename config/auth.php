@@ -15,9 +15,10 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'pasien',
     ],
 
+    
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -38,13 +39,13 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'pasien',
         ],
 
+        
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
-            'hash' => false,
+            'provider' => 'pasien',
         ],
     ],
 
@@ -66,11 +67,10 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'pasien' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => ASSES\PasienUser::class,
         ],
-
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -93,8 +93,8 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'pasien' => [
+            'provider' => 'pasien',
             'table' => 'password_resets',
             'expire' => 60,
         ],
