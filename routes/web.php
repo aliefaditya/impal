@@ -21,13 +21,44 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/jadwalpoli','JadwalController@index');
-Route::get('/jadwalpoli/tambah','JadwalController@tambah');
-Route::post('/jadwalpoli/simpan','JadwalController@simpan');
-Route::get('/jadwalpoli/edit/{id}','JadwalController@edit');
-Route::post('/jadwalpoli/update','JadwalController@update');
-Route::get('/jadwalpoli/hapus/{id}','JadwalController@hapus');
 
-Route::get('admin/routes', 'AdminController@admin')->middleware('admin');
+Route::get('/admin/tambahpoli','AdminController@tambahpoli');
+Route::post('/admin/poli/simpan','AdminController@simpan');
+Route::get('/admin/poli/edit/{id}','AdminController@edit');
+Route::post('/admin/updatepoli','AdminController@updatepoli');
+Route::get('/admin/poli/hapus/{id}','AdminController@hapus');
+
+Route::get('/admin/tambah','AdminController@tambah');
+Route::post('/admin/simpan','AdminController@simpan');
+Route::get('/admin/edit/{id}','AdminController@edit');
+Route::post('/admin/update','AdminController@update');
+Route::get('/admin/hapus/{id}','AdminController@hapus');
+
+Route::get('/admin/tambah','AdminController@tambah');
+Route::post('/admin/simpan','AdminController@simpan');
+Route::get('/admin/edit/{id}','AdminController@edit');
+Route::post('/admin/update','AdminController@update');
+Route::get('/admin/hapus/{id}','AdminController@hapus');
+
+Route::get('/admin/tambah','AdminController@tambah');
+Route::post('/admin/simpan','AdminController@simpan');
+Route::get('/admin/edit/{id}','AdminController@edit');
+Route::post('/admin/update','AdminController@update');
+Route::get('/admin/hapus/{id}','AdminController@hapus');
+
+Route::get('/admin/tambah','AdminController@tambah');
+Route::post('/admin/simpan','AdminController@simpan');
+Route::get('/admin/edit/{id}','AdminController@edit');
+Route::post('/admin/update','AdminController@update');
+Route::get('/admin/hapus/{id}','AdminController@hapus');
+
+Route::get('/admin/tambah','AdminController@tambah');
+Route::post('/admin/simpan','AdminController@simpan');
+Route::get('/admin/edit/{id}','AdminController@edit');
+Route::post('/admin/update','AdminController@update');
+Route::get('/admin/hapus/{id}','AdminController@hapus');
+
+Route::get('admin/', 'AdminController@admin')->middleware('admin');
 
 
 

@@ -26,7 +26,7 @@
 
                     <div class=”panel-body”>
 
-                    <a href="{{url('admin/routes')}}">Admin</a>
+                    <a href="{{url('admin')}}">Admin</a>
 
                     </div><?php } else echo '<div class="panel-heading">Normal User</div>';?>
 

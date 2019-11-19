@@ -4,6 +4,7 @@ namespace ASSES\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use DataTables;
 
 class AdminController extends Controller
 {
@@ -12,7 +13,9 @@ class AdminController extends Controller
         $poli = DB::table('poli')->get();
         $jadwal = DB::table('jadwal')->get();
         $dokter = DB::table('dokter')->get();
-        return view('admin', ['poli' => $poli, 'jadwal' => $jadwal, 'dokter' => $dokter]);
+        $jadwalpoli = DB::table('punyajadwal')->get();
+
+        return view('admin', ['poli' => $poli, 'jadwal' => $jadwal, 'dokter' => $dokter, 'jadwalpoli' => $jadwalpoli]);
     }
 
     public function index(){
@@ -31,6 +34,28 @@ class AdminController extends Controller
         // memanggil view tambah
         return view('tambah');
     
+    }
+
+    public function updatepoli(Request $request)
+    {
+        // update data poli
+        DB::table('poli')->where('KodePoli',$request->kodepoli)->update([
+            'NamaPoli' => $request->namapoli,
+            'Deskripsi' => $request->deskripsi
+        ]);
+        // alihkan halaman ke halaman admin
+        return redirect('/admin');
+    }
+
+    public function tambahpoli(Request $request)
+    {
+        DB::table('poli')->insert([
+			'KodePoli' => $request->kodepoli,
+			'NamaPoli' => $request->namapoli,
+			'Deskripsi' => $request->deskripsi
+		]);
+        // alihkan halaman ke halaman admin
+        return redirect('/admin');
     }
 
     

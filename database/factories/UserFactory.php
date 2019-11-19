@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(ASSES\User::class, function (Faker $faker) {
+$factory->define(ASSES\PasienUser::class, function (Faker $faker) {
     static $password;
 
     return [
@@ -21,5 +21,14 @@ $factory->define(ASSES\User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(ASSES\Poli::class, function (Faker $faker) {
+
+    return [
+        'KodePoli' => $faker->unique()->name,
+        'NamaPoli' => $faker->name,
+        'Deskripsi' => $faker->paragraph,
     ];
 });
