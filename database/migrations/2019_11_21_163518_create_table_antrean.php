@@ -16,9 +16,9 @@ class CreateTableAntrean extends Migration
         //create the table
         Schema::create('antrean', function (Blueprint $table){
            $table->primary('IdAntrean');
-           $table->increments('IdAntrean')->autoIncrement();
+           $table->increments('IdAntrean');
            $table->unique('nomor');
-           $table->date('created_at'); 
+           $table->dateTime('created_at'); 
            $table->timestamps()->nullable();
 
            $table->foreign('nik_pasien')->references('nik')->on('pasien');
@@ -36,5 +36,6 @@ class CreateTableAntrean extends Migration
     public function down()
     {
         //delete or rollback the table
+        Schema::dropIfExists('antrean');
     }
 }
