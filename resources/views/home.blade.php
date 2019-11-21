@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default"style="margin: 20% auto">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading"> You are logged in </div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    
+
+                    Hi, {{ Auth::user()->nama }} !
 
                     @if(\Session::has('error'))
                         <div class=”alert alert-danger”>
@@ -28,7 +30,7 @@
 
                     <a href="{{url('admin')}}">Admin</a>
 
-                    </div><?php } else echo '<div class="panel-heading">Normal User</div>';?>
+                    </div><?php } else echo '<div class="panel-heading"> Silahkan ambil nomor antrean kamu </div>';?>
 
                 </div>
             </div>

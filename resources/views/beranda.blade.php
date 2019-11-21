@@ -39,8 +39,11 @@
                         <div class="evet_location flex">
                             <h3>Anda telah mendaftar berobat pada,</h3>
                             <p><span class="lnr lnr-calendar-full"></span>Poli Umum</p>
-                            <p><span class="lnr lnr-calendar-full"></span>5th may, 2018</p>
-                            <p><span class="lnr lnr-clock"></span>Saturday, 09.00 am to 05.00 pm</p>
+                            <p><span class="lnr lnr-clock"></span>
+                                <?php 
+                                    $mytime = Carbon\Carbon::now();
+                                    echo $mytime->toDateTimeString(); 
+                                ?></p>
                         </div>
                     </div>
                     <div class="col-md-4 d_flex">
