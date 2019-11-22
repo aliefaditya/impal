@@ -5,11 +5,11 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default"style="margin: 20% auto">
-                <div class="panel-heading"> 
+                <div class="panel-heading">
                     You are logged in 
-                    <?php 
+                    <?php
                         $mytime = Carbon\Carbon::now();
-                        echo "                  ",$mytime->toDateTimeString(); 
+                        $mytime->toDateTimeString(); 
                     ?>
                 </div>
 
@@ -20,8 +20,7 @@
                         </div>
                     @endif
 
-                    Hi, {{ Auth::user()->nama }} !
-            
+                    Hi, {{ Auth::user()->nama }} !            
 
                     @if(\Session::has('error'))
                         <div class=”alert alert-danger”>
@@ -45,7 +44,9 @@
                                 <option value="tht">THT</option>
                         </select>
                         <h1 style="font-size:150px; text-align: center">2</h1>
-                        <button type="button" class="btn btn-primary btn-lg" style="text-align: center;">Ambil Nomor</button>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-primary btn-lg" style="text-align: center;">Ambil Nomor</button>
+                        </div>
                     </div>
 
                 </div>
