@@ -43,7 +43,8 @@
                                 <?php 
                                     $mytime = Carbon\Carbon::now();
                                     echo $mytime->toDateTimeString(); 
-                                ?></p>
+                                ?>
+                            </p>
                         </div>
                     </div>
                     <div class="col-md-4 d_flex">
