@@ -7,9 +7,9 @@
             <div class="panel panel-default"style="margin: 20% auto">
                 <div class="panel-heading">
                     You are logged in 
-                    <?php
-                        $mytime = Carbon\Carbon::now();
-                        $mytime->toDateTimeString(); 
+                    <?php 
+                            $mytime = Carbon\Carbon::now();
+                            echo $mytime->toDateTimeString(); 
                     ?>
                 </div>
 

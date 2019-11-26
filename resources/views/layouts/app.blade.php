@@ -89,8 +89,6 @@
 
                             </li>
                         @endguest   
-                        <li class="nav-item"><a href="blog.html" class="nav-link">Artikel</a></li>
-                        <li class="nav-item"><a href="contact.html" class="nav-link">Kontak Kami</a></li>
                     </ul>
                     </div>
 

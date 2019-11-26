@@ -7,7 +7,7 @@
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center">
             <div class="col-md-10 col-sm-12 ftco-animate mb-4 text-center">
-              <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>About</span></p>
+              <p class="breadcrumbs"><span class="mr-2"><a href="{{ url('/beranda') }}">Home</a></span> <span>About</span></p>
               <h1 class="mb-3 bread">Jadwal Praktek Dokter</h1>
             </div>
           </div>

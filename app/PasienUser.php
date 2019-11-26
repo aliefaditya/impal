@@ -55,7 +55,4 @@ class PasienUser extends Authenticatable
 
         return redirect('/pasien');
     }
-
-    
-
 }
