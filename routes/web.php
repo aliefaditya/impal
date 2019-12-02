@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('beranda');
 });
 
 Auth::routes();
@@ -22,41 +22,29 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/jadwalpoli','JadwalController@index');
 
-Route::get('/admin/tambahpoli','AdminController@tambahpoli');
-Route::post('/admin/poli/simpan','AdminController@simpan');
-Route::get('/admin/poli/edit/{id}','AdminController@edit');
-Route::post('/admin/updatepoli','AdminController@updatepoli');
-Route::get('/admin/poli/hapus/{id}','AdminController@hapus');
+Route::post('/admin/tambahpoli','AdminController@tambahpoli')->middleware('admin');
+Route::post('/admin/updatepoli','AdminController@updatepoli')->middleware('admin');
+Route::get('/admin/hapuspoli/{id}','AdminController@hapuspoli')->middleware('admin');
 
-Route::get('/admin/tambah','AdminController@tambah');
-Route::post('/admin/simpan','AdminController@simpan');
-Route::get('/admin/edit/{id}','AdminController@edit');
-Route::post('/admin/update','AdminController@update');
-Route::get('/admin/hapus/{id}','AdminController@hapus');
+Route::post('/admin/tambahjadwal','AdminController@tambahjadwal')->middleware('admin');
+Route::post('/admin/updatejadwal','AdminController@updatejadwal')->middleware('admin');
+Route::get('/admin/hapusjadwal/{id}','AdminController@hapusjadwal')->middleware('admin');
 
-Route::get('/admin/tambah','AdminController@tambah');
-Route::post('/admin/simpan','AdminController@simpan');
-Route::get('/admin/edit/{id}','AdminController@edit');
-Route::post('/admin/update','AdminController@update');
-Route::get('/admin/hapus/{id}','AdminController@hapus');
+Route::post('/admin/tambahdokter','AdminController@tambahdokter')->middleware('admin');
+Route::post('/admin/updatedokter','AdminController@updatedokter')->middleware('admin');
+Route::get('/admin/hapusdokter/{id}','AdminController@hapusdokter')->middleware('admin');
 
-Route::get('/admin/tambah','AdminController@tambah');
-Route::post('/admin/simpan','AdminController@simpan');
-Route::get('/admin/edit/{id}','AdminController@edit');
-Route::post('/admin/update','AdminController@update');
-Route::get('/admin/hapus/{id}','AdminController@hapus');
+Route::post('/admin/tambahjadwalpoli','AdminController@tambahjadwalpoli')->middleware('admin');
+Route::post('/admin/updatejadwalpoli','AdminController@updatejadwali')->middleware('admin');
+Route::get('/admin/hapusjadwalpoli/{id}','AdminController@hapusjadwalpoli')->middleware('admin');
 
-Route::get('/admin/tambah','AdminController@tambah');
-Route::post('/admin/simpan','AdminController@simpan');
-Route::get('/admin/edit/{id}','AdminController@edit');
-Route::post('/admin/update','AdminController@update');
-Route::get('/admin/hapus/{id}','AdminController@hapus');
+Route::post('/admin/tambahantrian','AdminController@tambahantrian')->middleware('admin');
+Route::post('/admin/updateantrian','AdminController@updateantrian')->middleware('admin');
+Route::get('/admin/hapusantrian/{id}','AdminController@hapus')->middleware('admin');
 
-Route::get('/admin/tambah','AdminController@tambah');
-Route::post('/admin/simpan','AdminController@simpan');
-Route::get('/admin/edit/{id}','AdminController@edit');
+
+
 Route::post('/admin/update','AdminController@update');
-Route::get('/admin/hapus/{id}','AdminController@hapus');
 
 Route::get('admin/', 'AdminController@admin')->middleware('admin');
 
@@ -88,6 +76,10 @@ Route::get('beranda', function () {
 });
 Route::get('/pasien',function () {
 	return view('pasien');
+});
+
+Route::get('kontak', function () {
+	return view('kontak');
 });
 Route::get('/pasien/edit/{id}', 'PasienController@edit');
 Route::put('/pasien/update/{id}', 'PasienController@update');

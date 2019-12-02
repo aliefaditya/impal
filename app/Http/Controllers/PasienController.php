@@ -11,7 +11,8 @@ class PasienController extends Controller
     {
         // mengambil data dari table pegawai
         
-    	$pasien = DB::table('pasien')->where('email', Auth::user()->email)->first();
+        $pasien = DB::table('pasien')->where('email', Auth::user()->email)->first();
+       
  
     	//mengirim data pegawai ke view index
         return view('index',['pasien' => $pasien]);

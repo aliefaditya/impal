@@ -50,7 +50,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
             <div class="container">
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}"> {{ config('app.name', 'Laravel') }}</a>
+                <a class="navbar-brand" href="{{ url('/') }}"> {{ config('app.name', 'ASSES') }}</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="oi oi-menu"></span> Menu
                     </button>
@@ -89,8 +89,8 @@
 
                             </li>
                         @endguest   
-                        <li class="nav-item"><a href="blog.html" class="nav-link">Artikel</a></li>
-                        <li class="nav-item"><a href="contact.html" class="nav-link">Kontak Kami</a></li>
+                      
+                        <li class="nav-item"><a href="{{ url('/kontak') }}" class="nav-link">Kontak Kami</a></li>
                     </ul>
                     </div>
 
@@ -125,7 +125,31 @@
     <script src="{{ asset('js/google-map.js')}}"></script> 
     <script src="{{ asset('js/main.js')}}"></script> 
     <script src="{{ asset('vendor/flipclock/timer.js')}}"></script>
+    <script>
+    function coba($ini) {
+            var randomString = function(length) {
+                
+                var text = "";
+            
+                var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                
+                for(var i = 0; i < length; i++) {
+                
+                    text += possible.charAt(Math.floor(Math.random() * possible.length));
+                
+                }
+                
+                return text;
+            }
 
+            // random string length
+            var random = randomString(10);
+            
+            // insert random string to the field
+            document.getElementById($ini).value = random;
+            
+        }
+</script>
 </body>
 
     

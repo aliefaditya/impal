@@ -72,4 +72,55 @@
             </div>
         </section>
         <!--================Event Date Area =================-->
+
+
+    <section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <span class="subheading">Our Services</span>
+            <h2>How it works?</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center"><div class="icon color-1 d-flex justify-content-center mb-3"><span class="align-self-center icon-user"></span></div></div>
+              <div class="media-body p-2">
+                <h3 class="heading">Login</h3>
+                <p>Akses beberapa fitur di platform asses dan sesuaikan jadwal berobat</p>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center"><div class="icon color-2 d-flex justify-content-center mb-3"><span class="align-self-center icon-search"></span></div></div>
+              <div class="media-body p-2">
+                <h3 class="heading">Searching</h3>
+                <p>Asses membantu kamu untuk melakukan pencarian poli atau dokter yang dituju</p>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center"><div class="icon color-3 d-flex justify-content-center mb-3"><span class="align-self-center icon-mobile"></span></div></div>
+              <div class="media-body p-2">
+                <h3 class="heading">Booking</h3>
+                <p>Reservasi antrean dapat dilakukan disini.</p>
+              </div>
+            </div>    
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center"><div class="icon color-4 d-flex justify-content-center mb-3"><span class="align-self-center icon-notifications"></span></div></div>
+              <div class="media-body p-2">
+                <h3 class="heading">Relax &amp; Receive the Notification</h3>
+                <p>Pemberitahuan kondisi antrean dan estimasi waktu terhadap antrean anda</p>
+              </div>
+            </div>      
+          </div>
+        </div>
+      </div>
+    </section>
 @endsection

@@ -9,6 +9,7 @@
             <div class="col-md-10 col-sm-12 ftco-animate mb-4 text-center">
               <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>About</span></p>
               <h1 class="mb-3 bread">Jadwal Praktek Dokter</h1>
+              
             </div>
           </div>
         </div>
@@ -33,6 +34,7 @@
           <div class="col-md-7 text-center heading-section ftco-animate">
             <span class="subheading">Jadwal Praktek Dokter</span>
             <h2>Jadwal Praktek Dokter</h2>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#daftarantrian">DAFTAR ANTRIAN <span class="align-self-center icon-plus"></span></button>
           </div>
         </div>
         <div class="row">
@@ -160,4 +162,49 @@
           </div>
         </div>
 </div>
+
+ 
+
+<!-- Modal Tambah Poli -->
+<div class="modal fade" id="daftarantrian" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <center><h2>DAFTAR ANTRIAN</h2></center>
+      </div>
+      <div class="modal-body">
+      <!-- isi form ini -->
+      <form method="POST" action="admin/tambahpoli" id="tambahpoli">
+      {{ csrf_field() }}
+        <div class="form-group">
+          <label for="formGroupExampleInput">NIK</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{ Auth::user()->nik }}" value="{{ Auth::user()->nik }}" name="tnik" required readonly>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Nama Poli</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nama Poli" name="tnamapoli"required>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Hari</label>
+            <select class="form-control" id="formGroupExampleInput2" name="thari" required>
+                <option value="Senin" >Senin</option>
+                <option value="Selasa" >Selasa</option>
+                <option value="Rabu" >Rabu</option>
+                <option value="Kamis" >Kamis</option>
+                <option value="Jum'at" >Jum'at</option>
+                <option value="Sabtu" >Sabtu</option>
+                <option value="Minggu" >Minggu</option>
+            </select>            
+        </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+        <input  type="submit" class="btn btn-primary" value="Submit" placeholder="Simpan" form="tambahpoli">
+      </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 @endsection
