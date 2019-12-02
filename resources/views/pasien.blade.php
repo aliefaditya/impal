@@ -42,52 +42,54 @@
         </div>
         <div class="row block-9">
           <div class="col-md-6 pr-md-5">
-            <form action="#">
+            <form  method="POST" id="editakun" action="pasien/update/" >
               <div class="form-group">
+              {{ csrf_field() }}
                 <label for="exampleInputEmail1">NIK</label>
-                <input type="text" class="form-control" placeholder="Your Name" value="{{ Auth::user()->nik }} "  readonly>
+                <input type="text" name="nik" class="form-control" placeholder="NIK" value="{{ Auth::user()->nik }}"  readonly>
               </div>
               <div class="form-group">
               <label for="exampleInputEmail1">Username</label>
-              <input type="text" class="form-control" placeholder="Your Name" value="{{ Auth::user()->username }} " readonly>
+              <input type="text" class="form-control" placeholder="Username Anda" value="{{ Auth::user()->username }}" readonly>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Nama Lengkap</label>
-                <input type="text" class="form-control" placeholder="Your Email" value="{{ Auth::user()->nama }} ">
+                <input type="text" class="form-control" placeholder="Nama Anda" value="{{ Auth::user()->nama }}" readonly>
               </div>
               <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
-                <input type="text" class="form-control" placeholder="Subject" value="{{ Auth::user()->email }} ">
+                <input type="text" class="form-control" placeholder="Email Anda" name="email" value="{{ Auth::user()->email }}">
               </div>
               <div class="form-group">
               <label for="exampleInputEmail1">Tanggal Lahir</label>
-              <input type="text" class="form-control" placeholder="Subject" value="{{ Auth::user()->ttl }} " readonly>
+              <input type="text" class="form-control" placeholder="TTL Anda" value="{{ Auth::user()->ttl }}" readonly>
               </div>
               <div class="form-group">
               <label for="exampleInputEmail1">Alamat</label>
-              <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message" readonly>{{ Auth::user()->alamat }}</textarea>
+              <textarea id="" cols="30" rows="7" class="form-control" placeholder="Alamat" name="alamat">{{ Auth::user()->alamat }}</textarea>
               </div>
               <div class="form-group">
               <label for="exampleInputEmail1">Telepon</label>
-              <input type="text" class="form-control" placeholder="Your Name" value="{{ Auth::user()->telepon }} ">
+              <input type="text" class="form-control" name="telepon" placeholder="Your Name" value="{{ Auth::user()->telepon }}">
               </div>
               <div class="form-group">
-                <input type="submit" value="Ubah Profile" class="btn btn-primary py-3 px-5">
+                <input type="submit" value="Ubah Profile" class="btn btn-primary py-3 px-5" form="editakun">
               </div>
               
             </form>
-            <form action="#">
+            <form action="pasien/ubahpassword/{{ Auth::user()->nik }}" method="POST" id="editpassword">
             <h2>Ubah Password</h2>
+             {{ csrf_field() }}
             <div class="form-group">
               <label for="exampleInputEmail1">Password Baru</label>
-              <input type="password" class="form-control" placeholder="Your Name">
+              <input type="password" class="form-control" name="password" placeholder="Your Name">
               </div>
               <div class="form-group">
-              <label for="exampleInputEmail1">Password Baru</label>
-              <input type="password" class="form-control" placeholder="Your Name">
+              <label for="exampleInputEmail1">Password Lama</label>
+              <input type="password" class="form-control" placeholder="Your Name" name="oldpassword">
               </div>
               <div class="form-group">
-                <input type="submit" value="Ubah Password" class="btn btn-primary py-3 px-5">
+                <input type="submit" value="Ubah Password" class="btn btn-primary py-3 px-5" form="editpassword">
               </div>
             </form>
 

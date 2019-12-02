@@ -52,7 +52,7 @@
               
 
               <!--BUTTON EDIT POLI-->
-              <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit{{ $p->KodePoli }}"><span class="icon-pencil"></span></button></td>
+              <td><a type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit{{ $p->KodePoli }}"><span class="icon-pencil"></span></a></td>
               <!--BUTTON HAPUS ISI LENGKAPI BUTTON INI -->
               <td><a type="button" class="btn btn-danger"  href="/admin/hapuspoli/{{ $p->KodePoli }}" onClick="return confirm('Apakah Anda Yakin?')" ><span class="align-self-center icon-delete"></span></td>
             </form>
@@ -209,7 +209,7 @@
         </div>
         <div class="modal-body">
         <!-- isi form ini -->
-        <form method="post" action="admin/updatejadwal" id="editjadwal">
+        <form method="post" action="admin/updatejadwal" id="editjadwal-{{ $j->Idjadwal }}">
         {{ csrf_field() }}
           <div class="form-group">
             <label for="formGroupExampleInput">ID Jadwal</label>
@@ -241,7 +241,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-        <input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan" form="editjadwal">
+        <input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan" form="editjadwal-{{ $j->Idjadwal }}">
         </div>
         </form>
       </div>

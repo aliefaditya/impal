@@ -126,7 +126,7 @@
     <script src="{{ asset('js/main.js')}}"></script> 
     <script src="{{ asset('vendor/flipclock/timer.js')}}"></script>
     <script>
-    function coba($ini) {
+    function coba(ini, length) {
             var randomString = function(length) {
                 
                 var text = "";
@@ -146,7 +146,7 @@
             var random = randomString(10);
             
             // insert random string to the field
-            document.getElementById($ini).value = random;
+            document.getElementById(ini).value = random;
             
         }
 </script>

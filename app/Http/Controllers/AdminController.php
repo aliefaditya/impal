@@ -13,7 +13,11 @@ class AdminController extends Controller
         $poli = DB::table('poli')->paginate(15);
         $jadwal = DB::table('jadwal')->paginate(15);
         $dokter = DB::table('dokter')->paginate(15);
-        $jadwalpoli = DB::table('punyajadwal')->paginate(15);
+        $jadwalpoli = DB::table('punyajadwal')->join('dokter', 'punyajadwal.idDokter', '=', 'dokter.idDokter')
+        ->join('poli', 'punyajadwal.idPoli', '=', 'poli.KodePoli')
+        ->join('jadwal', 'punyajadwal.idJadwal', '=', 'jadwal.Idjadwal')
+        ->select('punyajadwal.*', 'dokter.*', 'poli.*', 'jadwal.*')
+        ->paginate(15);
 
         return view('admin', ['poli' => $poli, 'jadwal' => $jadwal, 'dokter' => $dokter, 'jadwalpoli' => $jadwalpoli]);
     }
@@ -167,6 +171,18 @@ class AdminController extends Controller
         ]);
         // alihkan halaman ke halaman admin
         return redirect('/admin');
+    }
+
+    public function tampilantrian(Request $request)
+    {
+        $all = DB::table('antrean')->join('punyajadwal', 'antrean.idDaftarJadwal', '=', 'punyajadwal.daftarJadwal')
+        ->join('dokter', 'punyajadwal.idDokter', '=', 'dokter.idDokter')
+        ->join('poli', 'punyajadwal.idPoli', '=', 'poli.KodePoli')
+        ->join('jadwal', 'punyajadwal.idJadwal', '=', 'jadwal.Idjadwal')
+        ->select('antrean.*', 'dokter.*', 'poli.*', 'jadwal.*')
+        ->get();
+
+    return view('adminantrian', ['all' => $all, 'poli' => $poli, 'jadwal' => $jadwal]);
     }
 
 

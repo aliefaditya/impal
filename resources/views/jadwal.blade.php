@@ -34,7 +34,6 @@
           <div class="col-md-7 text-center heading-section ftco-animate">
             <span class="subheading">Jadwal Praktek Dokter</span>
             <h2>Jadwal Praktek Dokter</h2>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#daftarantrian">DAFTAR ANTRIAN <span class="align-self-center icon-plus"></span></button>
           </div>
         </div>
         <div class="row">
@@ -94,79 +93,44 @@
           
           </div>
 
-          
+        @foreach($poli as $p)  
         <div class="row justify-content-center kotak-poli mb-4">
-          <h3>Jadwal Poli</h3>
+          <h3>Jadwal Poli {{$p->NamaPoli}}</h3>
         </div>
         <div class="row">
-          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block text-left kotak-jadwal">
-              <div class="media-body p-3">
-                <h3 class="heading">Senin</h3>
-                <p>Jam 10.00 - 12.00</p>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block text-left kotak-jadwal">
-              <div class="media-body p-3">
-                <h3 class="heading">Selasa</h3>
-                <p>Jam 10.00 - 12.00</p>
-              </div>
-            </div>      
-          </div>
-          
-          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block text-left kotak-jadwal">
-              <div class="media-body p-3">
-                <h3 class="heading">Rabu</h3>
-                <p>Jam 10.00 - 12.00</p>
-              </div>
-            </div>    
-          </div>
-      
-  
-          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block text-left kotak-jadwal">
-              <div class="media-body p-3">
-                <h3 class="heading">Senin</h3>
-                <p>Jam 10.00 - 12.00</p>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate ">
-            <div class="media block-6 services d-block text-left kotak-jadwal">
-              <div class="media-body p-3">
-                <h3 class="heading">Selasa</h3>
-                <p>Jam 10.00 - 12.00</p>
-              </div>
-            </div>      
-          </div>
-          
-          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
+     
+        @foreach($jadwal as $j)  
+          @if ($j->idPoli == $p->KodePoli)
+
+          <a type="button" data-toggle="modal" data-target="#jadwal-{{ $j->daftarJadwal }}">
+          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate" onclick="klikJadwal()"> 
             <div class="media block-6 services d-block text-left kotak-jadwal">
               <div class="media-body p-3">
                 <div class="row">
                   <div class="col-4">
-                    <h3 class="heading">Rabu</h3>
+                    <h3 class="heading">{{$j->Hari}}</h3>
                   </div>
                   <div class="col-8">
-                    <p>Jam 10.00 - 12.00</p>
+                    <p>Jam {{$j->JamMulai}} - {{$j->JamAkhir}}</p>
                   </div>
                   <div class="col-12">
-                    <p>Nama dokter</p>
+                    <p>{{$j->namaDokter}}</p>
                   </div>
                 </div>
               </div>
             </div>    
           </div>
+          </a>
+          @endif
+          @endforeach
         </div>
+        @endforeach
 </div>
 
  
-
+ @foreach($jadwal as $j)  
 <!-- Modal Tambah Poli -->
-<div class="modal fade" id="daftarantrian" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+<div class="modal fade" id="jadwal-{{ $j->daftarJadwal }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -174,37 +138,57 @@
       </div>
       <div class="modal-body">
       <!-- isi form ini -->
-      <form method="POST" action="admin/tambahpoli" id="tambahpoli">
+      <form method="POST" action="jadwal/daftar" id="daftarantrian">
       {{ csrf_field() }}
+      <div class="form-group">
+          <input type="hidden" type="text" class="form-control" id="kodeantrean" value="" name="idantrean" required readonly>
+        </div>
+        <div class="form-group">
+          <input type="hidden" type="text" class="form-control" id="formGroupExampleInput" value="{{ $j->daftarJadwal }}" name="iddaftarjadwal" required readonly>
+        </div>
         <div class="form-group">
           <label for="formGroupExampleInput">NIK</label>
-          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{ Auth::user()->nik }}" value="{{ Auth::user()->nik }}" name="tnik" required readonly>
+          <input type="text" class="form-control" id="formGroupExampleInput"  value="{{ Auth::user()->nik }}" name="nikpasien" required readonly>
         </div>
         <div class="form-group">
           <label for="formGroupExampleInput">Nama Poli</label>
-          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nama Poli" name="tnamapoli"required>
+          <input type="text" class="form-control" id="formGroupExampleInput" value="{{ $j->NamaPoli }}" name="tnamapoli"required readonly>
         </div>
         <div class="form-group">
-            <label for="formGroupExampleInput2">Hari</label>
-            <select class="form-control" id="formGroupExampleInput2" name="thari" required>
-                <option value="Senin" >Senin</option>
-                <option value="Selasa" >Selasa</option>
-                <option value="Rabu" >Rabu</option>
-                <option value="Kamis" >Kamis</option>
-                <option value="Jum'at" >Jum'at</option>
-                <option value="Sabtu" >Sabtu</option>
-                <option value="Minggu" >Minggu</option>
-            </select>            
+          <label for="formGroupExampleInput">Hari</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" value="{{ $j->Hari }}" name="tnamapoli"required readonly>
         </div>
+        <div class="row">
+            <div class="col-6"><label for="formGroupExampleInput">Jam Mulai</label></div>
+            <div class="col-6"> <label for="formGroupExampleInput">Jam Akhir</label></div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                <input type="time" class="form-control" id="formGroupExampleInput" value="{{ $j->JamMulai }}" name="tjammulai" required readonly>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                <input type="time" class="form-control" id="formGroupExampleInput" value="{{ $j->JamAkhir }}" name="tjamakhir" required readonly>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Dokter</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" value="{{ $j->namaDokter }}" name="tnamapoli"required readonly>
+        </div>
+        
         </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-        <input  type="submit" class="btn btn-primary" value="Submit" placeholder="Simpan" form="tambahpoli">
+        <input  type="submit" class="btn btn-primary" value="Daftar" placeholder="Daftar" form="daftarantrian" onclick="coba('kodeantrean', 10)">
       </form>
       </div>
     </div>
   </div>
 
 </div>
+@endforeach
 
 @endsection

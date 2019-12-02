@@ -42,7 +42,7 @@ Route::post('/admin/tambahantrian','AdminController@tambahantrian')->middleware(
 Route::post('/admin/updateantrian','AdminController@updateantrian')->middleware('admin');
 Route::get('/admin/hapusantrian/{id}','AdminController@hapus')->middleware('admin');
 
-
+Route::post('adminantrian','AdminController@tampilantrian')->middleware('admin');
 
 Route::post('/admin/update','AdminController@update');
 
@@ -66,20 +66,18 @@ Route::get('profil', function () {
 	return view('profil');
 });
 
-Route::get('jadwal', function () {
-	return view('jadwal');
-});
-
+Route::get('jadwal', 'JadwalController@index');
+Route::post('jadwal/daftar', 'AntreanController@tambahantrian');
 
 Route::get('beranda', function () {
 	return view('beranda');
 });
-Route::get('/pasien',function () {
-	return view('pasien');
-});
+
 
 Route::get('kontak', function () {
 	return view('kontak');
 });
-Route::get('/pasien/edit/{id}', 'PasienController@edit');
-Route::put('/pasien/update/{id}', 'PasienController@update');
+Route::get('pasien',function () {return view('pasien'); });
+Route::post('pasien/update/', 'PasienController@updateDataDiri');
+Route::post('pasien/ubahpassword/{id}', 'PasienController@ubahpassword')->name('change.password');
+

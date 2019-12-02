@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+@inject('Antrean', 'ASSES\Http\Controllers\AntreanController')
         <section class="home-slider owl-carousel ftco-degree-bg">
             <div class="slider-item" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
                 <div class="overlay"></div>
@@ -30,17 +32,19 @@
             </div>
         </section>
         <!-- END slider --> 
-        
+        @if (Auth::check())
+        @if( $Antrean->cekngantri( Auth::user()->nik ) )
         <!--================Event Date Area =================-->
+        <?php $detail =$Antrean->getdetails( Auth::user()->nik )  ?>
         <section class="event_date_area">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 d_flex">
                         <div class="evet_location flex">
                             <h3>Anda telah mendaftar berobat pada,</h3>
-                            <p><span class="lnr lnr-calendar-full"></span>Poli Umum</p>
-                            <p><span class="lnr lnr-calendar-full"></span>5th may, 2018</p>
-                            <p><span class="lnr lnr-clock"></span>Saturday, 09.00 am to 05.00 pm</p>
+                            <p><span class="lnr lnr-calendar-full"></span>{{$detail->NamaPoli}}</p>
+                            <p><span class="lnr lnr-calendar-full"></span>{{$detail->namaDokter}}</p>
+                            <p><span class="lnr lnr-clock"></span>{{$detail->Hari}}, {{$detail->JamMulai}} - {{$detail->JamAkhir}}</p>
                         </div>
                     </div>
                     <div class="col-md-4 d_flex">
@@ -48,7 +52,7 @@
                         <h4>Nomor Antrean</h4>
                     </div>
                     <div class="row text-center">
-                        <h1 style="font-size:150px">2</h1>
+                        <h1 style="font-size:150px">{{ $detail->nomor}}</h1>
                     </div>
                     </div>
                     <div class="col-md-4 event_time">
@@ -72,7 +76,8 @@
             </div>
         </section>
         <!--================Event Date Area =================-->
-
+        @endif
+        @endif
 
     <section class="ftco-section ftco-degree-bg">
       <div class="container">

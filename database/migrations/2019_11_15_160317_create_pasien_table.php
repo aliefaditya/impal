@@ -19,7 +19,7 @@ class CreatePasienTable extends Migration
             $table->string('nama');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('username');
+            $table->string('username')->unique();
             $table->date('ttl');
             $table->mediumText('alamat');
             $table->string('telepon')->nullable();

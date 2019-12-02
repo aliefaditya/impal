@@ -12,11 +12,14 @@ class JadwalController extends Controller
     	$jadwal = DB::table('poli')
         ->join('punyajadwal', 'poli.KodePoli', '=', 'punyajadwal.idPoli')
         ->join('jadwal', 'punyajadwal.idJadwal', '=', 'jadwal.Idjadwal')
-        ->select('poli.NamaPoli', 'jadwal.*')
+        ->join('dokter', 'punyajadwal.idDokter', '=', 'dokter.idDokter')
+        ->select('punyajadwal.*', 'dokter.*', 'poli.*', 'jadwal.*')
         ->get();
+
+        $poli = DB::table('poli')->get();
  
     	// mengirim data pegawai ke view index
-        return view('jadwal',['jadwal' => $jadwal]);
+        return view('jadwal',['jadwal' => $jadwal, 'poli' => $poli]);
     }
 
     public function tambah()
